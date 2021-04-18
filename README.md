@@ -5,9 +5,10 @@ The **PHP Safety Lock** ensures that whenever a page with a PHP script including
 
 ______
 
+## Evolution of the PHP Safety Lock
 
-## Spring 2014
+### Spring 2014
 
-## Autumn 2014
+### Autumn 2014
 
-## Spring 2019
+### Spring 2019
