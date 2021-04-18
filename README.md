@@ -5,6 +5,8 @@ The **PHP Safety Lock** ensures that whenever a page with a PHP script including
 
 ## Example of the PHP Safety Lock
 
+```
+```
 ______
 
 ## Evolution of the PHP Safety Lock
