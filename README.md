@@ -67,14 +67,14 @@ In late April 2019, I set out to write a PHP Filesystem Script which would edit 
 
 See: [**Kubaru**](https://github.com/RouninMedia/kubaru) \[**配る**\] - the Japanese verb for *to deal (cards)*
 
-The script was only half-built and lacked a UI, so the edits needed to be hard-coded into the script.
+**N.B.** The script was only half-built and lacked a UI, so the edits needed to be hard-coded into the script.
 
 I needed for the script to not run by accident if ever I shut down and restarted the browser and then inadvertently focused on the tab.
 
 This time, rather than signalling the state using `$_POST` variables (which are harder for a human user to verify), I used `$_GET` variables (ie. the `queryString`) to indicate one of two states:
 
-  i. *initial*
-  ii. *ready-to-run*
+  1. *initial*
+  2. *ready-to-run*
 
 The script's *initial* state would display a **Run Kubaru** button, which, when pressed, would run the **Kubaru** script.
 
