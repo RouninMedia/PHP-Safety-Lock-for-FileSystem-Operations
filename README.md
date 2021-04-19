@@ -65,4 +65,4 @@ Then, the app's state of progress might be tracked via `$_POST` variables which 
 
 I set out to write a PHP Filesystem Script which would edit *all* **Ashiva PageManifests** *en bloc*, so that I no longer had to edit and upload each *PageManifest* individually and manually.
 
-**Kubaru**
+**Kubaru** \[**配る**\] (the Japanese verb for *to deal (cards)*)
