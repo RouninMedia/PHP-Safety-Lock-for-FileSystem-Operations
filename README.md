@@ -54,7 +54,7 @@ myActionButton.addEventListener('click', updateFiles, false);
 
 if ((isset($_GET['updateFilesNow'])) && ($_GET['updateFilesNow'] === 'true')) {
 
-  /* [... FILE UPDATING CODE HERE...] */
+  /* [... PHP CODE UPDATES FILES HERE...] */
 
   $Protocol = 'https://';
   $Domain = $_SERVER['HTTP_HOST'];
