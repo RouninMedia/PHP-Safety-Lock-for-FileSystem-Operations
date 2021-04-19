@@ -66,3 +66,18 @@ Then, the app's state of progress might be tracked via `$_POST` variables which 
 In late April 2019, I set out to write a PHP Filesystem Script which would edit *all* **Ashiva PageManifests** *en bloc*, so that I no longer had to edit and upload each *PageManifest* individually and manually.
 
 See: [**Kubaru**](https://github.com/RouninMedia/kubaru) \[**配る**\] - the Japanese verb for *to deal (cards)*
+
+The script was only half-built and lacked a UI, so the edits needed to be hard-coded into the script.
+
+But I needed for the script to not run by accident if ever I shut down and restarted the browser and then inadvertently focused on the tab.
+
+This time, rather than signalling the state using `$_POST` variables (which are less easy for a user to verify), I used `$_GET` variables (ie. the `queryString`).
+
+Basically, the script had two states:
+
+  i. initial
+  ii. ready-to-run
+
+The script's initial state would display a button, which, when pressed, would launch the **Kubaru** script.
+
+The script's ready-to-run state would display a different button ***and**
