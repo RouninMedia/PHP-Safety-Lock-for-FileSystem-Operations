@@ -14,7 +14,6 @@ The **PHP Safety Lock** ensures that whenever a page with a PHP script including
 ```javascript
 // JAVASCRIPT (at bottom of file)
 
-<script>
 const myActionButton = document.getElementsByClassName('my-action-button')[0];
 
 const updateFiles = () => {
@@ -28,11 +27,11 @@ const updateFiles = () => {
 }
 
 myActionButton.addEventListener('click', updateFiles, false);
-</script>
 ```
 
 ```php
 // PHP (at top of file)
+
 
 
 ```
