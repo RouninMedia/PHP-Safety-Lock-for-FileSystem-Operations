@@ -69,15 +69,24 @@ See: [**Kubaru**](https://github.com/RouninMedia/kubaru) \[**配る**\] - the Ja
 
 The script was only half-built and lacked a UI, so the edits needed to be hard-coded into the script.
 
-But I needed for the script to not run by accident if ever I shut down and restarted the browser and then inadvertently focused on the tab.
+I needed for the script to not run by accident if ever I shut down and restarted the browser and then inadvertently focused on the tab.
 
-This time, rather than signalling the state using `$_POST` variables (which are less easy for a user to verify), I used `$_GET` variables (ie. the `queryString`).
+This time, rather than signalling the state using `$_POST` variables (which are harder for a human user to verify), I used `$_GET` variables (ie. the `queryString`) to indicate one of two states:
 
-Basically, the script had two states:
+  i. *initial*
+  ii. *ready-to-run*
 
-  i. initial
-  ii. ready-to-run
+The script's *initial* state would display a **Run Kubaru** button, which, when pressed, would run the **Kubaru** script.
 
-The script's initial state would display a button, which, when pressed, would launch the **Kubaru** script.
+The script's *ready-to-run* state would display a different button, **Initialise**, instead, which would return the app to its initial state ***but then*** it would **also** run the **Kubaru** script.
 
-The script's ready-to-run state would display a different button ***and**
+The idea was that the user would:
+
+ - press the **Run Kubaru** button
+ - run the **Kubaru** script
+ - read the results to confirm the script had run normally
+ - *then* press the **Initialise** button to return the app to its *initial* state where it couldn't automatically run the script
+
+Of course this setup very much depends on the user pressing the **Initialise** button and not leaving the app in a *"live state"*.
+
+And... this is where the **PHP Safety Lock for FileSystem Operations** comes in.
