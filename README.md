@@ -32,7 +32,18 @@ myActionButton.addEventListener('click', updateFiles, false);
 ```php
 // PHP (at top of file)
 
+if ((isset($_GET['updateFilesNow'])) && ($_GET['updateFilesNow'] === 'true')) {
 
+  /* [... FILE UPDATING CODE HERE...] */
+
+  $Protocol = 'https://';
+  $Domain = $_SERVER['HTTP_HOST'];
+  $Path = $_SERVER['SCRIPT_NAME'];
+
+  $Query_String = explode('&updateFilesNow', $_SERVER['QUERY_STRING'])[0];
+
+  header('Location: '.$Protocol.$Domain.$Path.$Query_String);
+}
 
 ```
 ______
