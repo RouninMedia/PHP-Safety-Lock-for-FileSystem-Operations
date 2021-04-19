@@ -53,7 +53,7 @@ ______
 
 ### Spring 2014
 
-Having learned about PHP Filesystem functions in late summer 2013, and made some tentative progress during early Autumn 2013, in **May 2014** I set about writing a series of self-contained FileSystem Management tools, accessible through the browser, intended to create, update and delete pages, sitemaps etc. on **attitudeTravel Mobile**. Each tool comprised a form with an `action` attribute. Clicking the `<input type="submit" />` at the bottom of the form sent the browser to *the new URL* declared by the `action` attribute, which executed the PHP Filesystem functions.
+In May 2014, having learned about PHP Filesystem functions in late summer 2013, and made some tentative progress during early Autumn 2013, I set about writing a series of self-contained FileSystem Management tools, accessible through the browser, intended to create, update and delete pages, sitemaps etc. on **attitudeTravel Mobile**. Each tool comprised a form with an `action` attribute. Clicking the `<input type="submit" />` at the bottom of the form sent the browser to *the new URL* declared by the `action` attribute, which executed the PHP Filesystem functions.
 
 ### Autumn 2014
 
