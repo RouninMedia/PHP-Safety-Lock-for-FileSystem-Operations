@@ -5,7 +5,36 @@ The **PHP Safety Lock** ensures that whenever a page with a PHP script including
 
 ## Example of the PHP Safety Lock
 
+```html
+// HTML
+
+<button type="button" class="my-action-button">Action Button</button>
 ```
+
+```javascript
+// JAVASCRIPT (at bottom of file)
+
+<script>
+const myActionButton = document.getElementsByClassName('my-action-button')[0];
+
+const updateFiles = () => {
+
+  let updateFilesNowURL = '';
+  updateFilesNowURL += window.location.href.split('?')[0];
+  updateFilesNowURL += '?data-object='.JSON.stringify(myDataObject);
+  updateFilesNowURL += '&updateFilesNow=true';
+
+  window.location.href = updateFilesNowURL;
+}
+
+myActionButton.addEventListener('click', updateFiles, false);
+</script>
+```
+
+```php
+// PHP (at top of file)
+
+
 ```
 ______
 
