@@ -19,6 +19,7 @@ At no point does the parameter ever appear in the `queryString` in the URL bar.
 
 This prevents the *FileSystem Operations* from ever being run accidentally.
 
+_______
 
 ## Example of the PHP Safety Lock
 
