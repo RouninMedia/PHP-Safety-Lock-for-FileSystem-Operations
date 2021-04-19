@@ -3,6 +3,22 @@ The **PHP Safety Lock** ensures that whenever a page with a PHP script including
 
 ## How the PHP Safety Lock works
 
+The **PHP Safety Lock** hinges on the use of the PHP `header()` function:
+
+    header('Location: https://mydomain.com/my/path/?my-query-string=my-data');
+
+If a ***specific*** `$_GET` parameter is detected in the `queryString` (in the example below, it's `updateFilesNow=true`), the PHP Script will run its *FileSystem Operations* and then send a **raw HTTP Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` parameter.
+
+This means the URL at which the *FileSystem Operations* are run is ***never seen***.
+
+The `queryString` parameter is added by **Javascript**.
+After the *FileSystem Operations* have run, the same `queryString` parameter is removed by **PHP**.
+
+At no point does the parameter ever appear in the `queryString` in the URL bar.
+
+This prevents the *FileSystem Operations* from ever being run accidentally.
+
+
 ## Example of the PHP Safety Lock
 
 ```html
@@ -87,6 +103,6 @@ The idea was that the user would:
  - read the results to confirm the script had run normally
  - *then* press the **Initialise** button to return the app to its *initial* state where it couldn't automatically run the script
 
-Of course this setup very much depends on the user pressing the **Initialise** button and not leaving the app in a *"live state"*.
+Of course this setup *very much depends* on the user pressing the **Initialise** button and not leaving the app in a *"live state"*.
 
 And... this is where the **PHP Safety Lock for FileSystem Operations** comes in.
