@@ -59,10 +59,10 @@ Having learned about PHP Filesystem functions in late summer 2013, and made some
 
 In October 2014, while building the **Destinations Generator** for **attitudeTravel Mobile** and being distantly familiar with the term ***Single** Page App* (though uncomprehending of what it actually meant or entailed), it struck me that rather than the `action` attribute of the form declaring a *new URL*, it might declare the *current URL* (via: `action="http://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']"`).
 
-Then the app's state of progress might be tracked via `$_POST` variables which PHP could read. (I was clearly happy with this approach because I used a more elaborate variant of the same pattern in Jan 2016, when building the original single-file-setup for the *website initialiser* which evolved into **CMS3**). 
+Then, the app's state of progress might be tracked via `$_POST` variables which PHP could read. (I was clearly happy with this approach because I used a more elaborate variant of the same pattern in Jan 2016, when building the original single-file-setup for the *website initialiser* which evolved into **CMS3**). 
 
 ### Spring 2019
 
-I set out to write a PHP Filesystem Script which would edit all *Ashiva PageManifests*, so that I no longer had to edit and upload each *PageManifest* manually.
+I set out to write a PHP Filesystem Script which would edit *all* **Ashiva PageManifests** *en bloc*, so that I no longer had to edit and upload each *PageManifest* individually and manually.
 
 **Kubaru**
