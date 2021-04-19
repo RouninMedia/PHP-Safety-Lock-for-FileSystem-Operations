@@ -7,7 +7,7 @@ The **PHP Safety Lock** hinges on the use of the PHP `header()` function:
 
     header('Location: https://mydomain.com/my/path/?my-query-string=my-data');
 
-If a ***specific*** `$_GET` parameter is detected in the `queryString` (in the example below, it's `updateFilesNow=true`), the PHP Script will run its *FileSystem Operations* and then send a **raw HTTP Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` parameter.
+If **PHP** detects a ***specific*** `$_GET` parameter (inserted by **Javascript**) in the `queryString` - in the example below, it's `updateFilesNow=true` - the PHP Script will run its *FileSystem Operations* and then send a **raw HTTP Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` parameter.
 
 This means the URL at which the *FileSystem Operations* are run is ***never seen***.
 
