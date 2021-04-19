@@ -20,7 +20,9 @@ const updateFiles = () => {
 
   let updateFilesNowURL = '';
   updateFilesNowURL += window.location.href.split('?')[0];
-  updateFilesNowURL += '?data-object='.JSON.stringify(myDataObject);
+  updateFilesNowURL += '?';
+  updateFilesNowURL += 'data-object-1='.JSON.stringify(myDataObject1);
+  updateFilesNowURL += 'data-object-2='.JSON.stringify(myDataObject2);
   updateFilesNowURL += '&updateFilesNow=true';
 
   window.location.href = updateFilesNowURL;
