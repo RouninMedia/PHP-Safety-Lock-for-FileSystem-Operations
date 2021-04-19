@@ -1,5 +1,5 @@
 # PHP Safety Lock for FileSystem Operations
-The **PHP Safety Lock** ensures that whenever a page including a FileSystem Operations PHP script loads or reloads, no files within the filesystem can be *accidentally* overwritten or deleted.
+The **PHP Safety Lock** ensures that whenever a page including a FileSystem Operations PHP script loads or reloads, that script cannot be initiated accidentally and no files within the filesystem can be *accidentally* overwritten or deleted.
 
 ## How the PHP Safety Lock works
 
