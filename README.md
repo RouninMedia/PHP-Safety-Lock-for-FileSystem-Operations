@@ -12,6 +12,7 @@ If **PHP** detects a ***specific*** `$_GET` parameter (inserted by **Javascript*
 This means the URL at which the *FileSystem Operations* are run is ***never seen***.
 
 The `queryString` parameter is added by **Javascript**.
+
 After the *FileSystem Operations* have run, the same `queryString` parameter is removed by **PHP**.
 
 At no point does the parameter ever appear in the `queryString` in the URL bar.
