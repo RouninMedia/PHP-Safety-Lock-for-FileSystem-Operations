@@ -7,21 +7,21 @@ The **PHP Safety Lock** hinges on the use of the PHP `header()` function:
 
     header('Location: https://mydomain.com/my/path/?my-query-string=my-data');
 
-If **PHP** detects a ***specific*** `$_GET` parameter (inserted by **Javascript**) in the `queryString` - in the example below, it's `updateFilesNow=true` - the PHP Script will run its *FileSystem Operations* and then send a **raw HTTP Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` parameter.
+If **PHP** detects a ***specific*** `$_GET` parameter in the `queryString` or `$_POST` parameter in the document headers (inserted, in either case, by **Javascript**) the PHP Script will run its *FileSystem Operations* and *then* send a **raw HTTP Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` or `$_POST` parameter.
 
 This means the URL at which the *FileSystem Operations* are run is ***never seen***.
 
-The `queryString` parameter is added by **Javascript**.
+The `$_GET` or `$_POST` parameter is added by **Javascript**.
 
-After the *FileSystem Operations* have run, the same `queryString` parameter is removed by **PHP**.
+After the *FileSystem Operations* have run, the same `$_GET` or `$_POST` parameter is removed by **PHP**.
 
-At no point does the parameter ever appear in the `queryString` in the URL bar.
+At no point does the `$_GET` or `$_POST` parameter ever appear, visibly, in the `queryString` in the URL bar or anywhere else.
 
 This prevents the *FileSystem Operations* from ever being run accidentally.
 
 _______
 
-## Example of the PHP Safety Lock
+## Example of the PHP Safety Lock using the `GET` parameter: `updateFilesNow=true`
 
 ```html
 <!-- HTML -->
@@ -65,6 +65,54 @@ if ((isset($_GET['updateFilesNow'])) && ($_GET['updateFilesNow'] === 'true')) {
 }
 
 ```
+
+_______
+
+## Example of the PHP Safety Lock using the `POST` parameter: `updateFilesNow=true`
+
+```html
+<!-- HTML -->
+
+<button type="button" class="my-action-button">Action Button</button>
+```
+
+```javascript
+// JAVASCRIPT (at bottom of file)
+
+const myActionButton = document.getElementsByClassName('my-action-button')[0];
+
+const updateFiles = () => {
+
+  let updateFilesNowURL = '';
+  updateFilesNowURL += window.location.href.split('?')[0];
+  updateFilesNowURL += '?';
+  updateFilesNowURL += 'data-object-1='.JSON.stringify(myDataObject1);
+  updateFilesNowURL += 'data-object-2='.JSON.stringify(myDataObject2);
+  updateFilesNowURL += '&updateFilesNow=true';
+
+  window.location.href = updateFilesNowURL;
+}
+
+myActionButton.addEventListener('click', updateFiles, false);
+```
+
+```php
+// PHP (at top of file)
+
+if ((isset($_GET['updateFilesNow'])) && ($_GET['updateFilesNow'] === 'true')) {
+
+  /* [... PHP CODE UPDATES FILES HERE...] */
+
+  $Protocol = 'https://';
+  $Domain = $_SERVER['HTTP_HOST'];
+  $Path = $_SERVER['SCRIPT_NAME'];
+  $Query_String = explode('&updateFilesNow', $_SERVER['QUERY_STRING'])[0];
+
+  header('Location: '.$Protocol.$Domain.$Path.$Query_String);
+}
+
+```
+
 ______
 
 ## Evolution of the PHP Safety Lock
