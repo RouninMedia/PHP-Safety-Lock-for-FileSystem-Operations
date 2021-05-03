@@ -62,7 +62,8 @@ if ((isset($_GET['updateFilesNow'])) && ($_GET['updateFilesNow'] === 'true')) {
   $Protocol = 'https://';
   $Domain = $_SERVER['HTTP_HOST'];
   $Path = $_SERVER['SCRIPT_NAME'];
-  $Query_String = explode('&updateFilesNow', $_SERVER['QUERY_STRING'])[0];
+  $Query_String = str_replace('update-files', 'confirm-updates', $_SERVER['QUERY_STRING']);
+  $Query_String = explode('&updateFilesNow', $Query_String)[0];
 
   header('Location: '.$Protocol.$Domain.$Path.$Query_String);
 }
