@@ -99,16 +99,18 @@ myActionButton.addEventListener('click', updateFiles, false);
 ```php
 // PHP (at top of file)
 
-if ((isset($_GET['updateFilesNow'])) && ($_GET['updateFilesNow'] === 'true')) {
+if (($_GET['appView'] === 'update-files) && (isset($_POST['updateFilesNow'])) && ($_POST['updateFilesNow'] === 'true')) {
 
   /* [... PHP CODE UPDATES FILES HERE...] */
-
+  
+  $_POST['updateFilesNow'] = 'false';
   $Protocol = 'https://';
   $Domain = $_SERVER['HTTP_HOST'];
   $Path = $_SERVER['SCRIPT_NAME'];
-  $Query_String = explode('&updateFilesNow', $_SERVER['QUERY_STRING'])[0];
+  $Query_String = str_replace('update-files', 'confirm-updates', $_SERVER['QUERY_STRING']);
 
-  header('Location: '.$Protocol.$Domain.$Path.$Query_String);
+  header('HTTP/1.1 307 Temporary Redirect');
+  header('Location: '.$Protocol.$Domain.$Path.'?'.$Query_String);
 }
 
 ```
