@@ -177,7 +177,7 @@ The idea was that the user would:
  - read the results to confirm the script had run normally
  - *then* press the **Initialise** button to return the app to its *initial* state where it couldn't automatically run the script
 
-Of course this setup *very much depended* on the user pressing the **Initialise** button and not leaving the app in a "live *ready-to-run* state".
+Of course this setup *very much depended* on the user pressing the **Initialise** button and not leaving the app in a *live **ready-to-run** state*.
 
 And... this is where the **PHP Safety Lock for FileSystem Operations** comes in.
 
