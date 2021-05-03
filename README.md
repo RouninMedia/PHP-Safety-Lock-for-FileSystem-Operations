@@ -180,3 +180,8 @@ The idea was that the user would:
 Of course this setup *very much depends* on the user pressing the **Initialise** button and not leaving the app in a *"live state"*.
 
 And... this is where the **PHP Safety Lock for FileSystem Operations** comes in.
+
+In **April 2021**, I developed two versions of the **PHP Safety Lock for FileSystem Operations**:
+
+ - one straightforwardly using `GET` parameters in the `queryString`
+ - the other using `POST` parameters and preserving those `POST` parameters using `307` and `308` HTTP Redirects 
