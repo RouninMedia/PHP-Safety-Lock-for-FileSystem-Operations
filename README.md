@@ -168,7 +168,7 @@ This time, rather than signalling the state using `$_POST` variables (which are 
 
 The script's *initial* state would display a **Run Kubaru** button, which, when pressed, would run the **Kubaru** script.
 
-The script's *ready-to-run* state would display a different button, **Initialise**, instead, which would return the app to its initial state ***but then*** it would **also** run the **Kubaru** script.
+The script's *ready-to-run* state would display a different button, **Initialise** instead (which, when pressed, would return the app to its initial state) ***but before that*** it would **also** run the **Kubaru** script.
 
 The idea was that the user would:
 
