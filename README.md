@@ -7,9 +7,9 @@ The **PHP Safety Lock** hinges on the use of the PHP `header()` function:
 
     header('Location: https://mydomain.com/my/path/?my-query-string=my-data');
 
-If **PHP** detects a ***specific*** `$_GET` parameter in the `queryString` or `$_POST` parameter in the document headers (inserted, in either case, by **Javascript**) the PHP Script will run its *FileSystem Operations* and *then* send a **raw HTTP Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` or `$_POST` parameter.
+If **PHP** detects a ***specific*** `$_GET` parameter in the `queryString` or `$_POST` parameter in the document headers (inserted, in either case, by **Javascript**) the PHP Script will run its *FileSystem Operations* and *then* send a **raw HTTP Redirect Header** to the client, redirecting the client request to a the same URL but *without* that specific `$_GET` or `$_POST` parameter.
 
-This means the URL at which the *FileSystem Operations* are run is ***never seen***.
+This means the interstitial URL at which the *FileSystem Operations* are run is ***never seen***.
 
 The `$_GET` or `$_POST` parameter is added by **Javascript**.
 
