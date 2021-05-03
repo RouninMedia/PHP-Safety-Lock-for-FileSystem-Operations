@@ -36,12 +36,15 @@ const myActionButton = document.getElementsByClassName('my-action-button')[0];
 
 const updateFiles = () => {
 
+  // SET GET PARAMETERS
   let updateFilesNowURL = '';
   updateFilesNowURL += window.location.href.split('?')[0];
   updateFilesNowURL += '?';
   updateFilesNowURL += 'data-object-1='.JSON.stringify(myDataObject1);
+  updateFilesNowURL += '&';
   updateFilesNowURL += 'data-object-2='.JSON.stringify(myDataObject2);
-  updateFilesNowURL += '&updateFilesNow=true';
+  updateFilesNowURL += '&';
+  updateFilesNowURL += 'updateFilesNow=true';
 
   window.location.href = updateFilesNowURL;
 }
@@ -82,15 +85,33 @@ _______
 const myActionButton = document.getElementsByClassName('my-action-button')[0];
 
 const updateFiles = () => {
-
+  
+  // SET GET PARAMETERS
   let updateFilesNowURL = '';
   updateFilesNowURL += window.location.href.split('?')[0];
   updateFilesNowURL += '?';
-  updateFilesNowURL += 'data-object-1='.JSON.stringify(myDataObject1);
-  updateFilesNowURL += 'data-object-2='.JSON.stringify(myDataObject2);
-  updateFilesNowURL += '&updateFilesNow=true';
+  updateFilesNowURL += 'appView=update-files';  
 
-  window.location.href = updateFilesNowURL;
+  // CREATE HTML FORM
+  const form = document.createElement('form');
+  const method = 'post';
+  const action = updateFilesNowURL;
+  Object.assign(form, {method, action});
+
+  // SET POST PARAMETERS
+  const updateFilesNow = 'true';
+  const data = {dataObject1, dataObject2, updateFilesNow};
+
+  for (let entry in data) {
+
+    let input = document.createElement('input');
+    input.setAttribute('name', entry);
+    input.setAttribute('value', data[entry]);
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
 }
 
 myActionButton.addEventListener('click', updateFiles, false);
@@ -103,12 +124,12 @@ if (($_GET['appView'] === 'update-files) && (isset($_POST['updateFilesNow'])) &&
 
   /* [... PHP CODE UPDATES FILES HERE...] */
   
-  $_POST['updateFilesNow'] = 'false';
   $Protocol = 'https://';
   $Domain = $_SERVER['HTTP_HOST'];
   $Path = $_SERVER['SCRIPT_NAME'];
   $Query_String = str_replace('update-files', 'confirm-updates', $_SERVER['QUERY_STRING']);
-
+  
+  unset($_POST['updateFilesNow']);
   header('HTTP/1.1 307 Temporary Redirect');
   header('Location: '.$Protocol.$Domain.$Path.'?'.$Query_String);
 }
