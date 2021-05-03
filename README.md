@@ -186,4 +186,4 @@ And... this is where the **PHP Safety Lock for FileSystem Operations** comes in.
 In **April 2021**, I developed two versions of the **PHP Safety Lock for FileSystem Operations**:
 
  - one straightforwardly using `GET` parameters in the `queryString`
- - the other using `POST` parameters and preserving those `POST` parameters using `307` and `308` HTTP Redirects 
+ - the other using `POST` parameters and maintaining whichever `POST` parameters are still needed using `307` and `308` HTTP Redirects 
